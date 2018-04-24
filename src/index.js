@@ -1,2 +1,2 @@
-import {name3} from './exports'
-console.log(name3)
+import {name3 as dupa} from './exports'
+console.log(dupa)
