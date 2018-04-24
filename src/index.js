@@ -1,12 +1,33 @@
-const add = (a,b) => a+b
+function Cat(name) {
+    this.name = name
+    this.sound = "Meow"
+    this.makeSound = function () {
+        console.log(this.sound)
+    }
+}
+
+function ArrowCat(name) {
+    this.name = name
+    this.sound = "meow"
+    this.makeSound= () => console.log(this.sound)
+
+}
 
 
+const cat = new Cat("Fluffy")
+cat.makeSound()
 
-const sum = ((a,b) => a+b)(4,2)
 
-console.log(sum)
+window.makeSoundInGlobalScope = cat.makeSound
+window.makeSoundInGlobalScope() // undefined because of global scope
 
-// object by arrows
+const arrowCat = new ArrowCat("Fluf")
+arrowCat.makeSound()
 
-const obj = () => ({})
-console.log(obj())
+window.arrowMakeSoundInGlobalScope = arrowCat.makeSound
+window.arrowMakeSoundInGlobalScope()
+
+
+// FUNKCJE STRZAŁKOWE NIE MOGĄ BYĆ KONSTRUKTORAMI !!!
+
+// ARROW FUNCTION CAN't BE CONSTRUCTOR FUNCTION
