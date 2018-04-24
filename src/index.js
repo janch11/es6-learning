@@ -1,2 +1,2 @@
-import {name3 as dupa} from './exports'
+import dupa from './exports'
 console.log(dupa)
