@@ -1,33 +1,55 @@
-function Cat(name) {
-    this.name = name
-    this.sound = "Meow"
-    this.makeSound = function () {
-        console.log(this.sound)
-    }
-}
+function Counter() {
+    this.count = 0
+    setInterval((function () {
 
-function ArrowCat(name) {
-    this.name = name
-    this.sound = "meow"
-    this.makeSound= () => console.log(this.sound)
-
+            this.count++
+        }).bind(this)
+        , 1000
+    )
 }
 
 
-const cat = new Cat("Fluffy")
-cat.makeSound()
+function ArrowCounter() {
+    this.count = 0
+
+    setInterval(() => {
+
+            this.count++
+        }
+        , 1000
+    )
+}
 
 
-window.makeSoundInGlobalScope = cat.makeSound
-window.makeSoundInGlobalScope() // undefined because of global scope
-
-const arrowCat = new ArrowCat("Fluf")
-arrowCat.makeSound()
-
-window.arrowMakeSoundInGlobalScope = arrowCat.makeSound
-window.arrowMakeSoundInGlobalScope()
+window.counter = new Counter()
 
 
-// FUNKCJE STRZAŁKOWE NIE MOGĄ BYĆ KONSTRUKTORAMI !!!
+window.arrowCounter = new ArrowCounter()
 
-// ARROW FUNCTION CAN't BE CONSTRUCTOR FUNCTION
+
+//
+// function ArrowCat(name) {
+//     this.name = name
+//     this.sound = "meow"
+//     this.makeSound= () => console.log(this.sound)
+//
+// }
+//
+//
+// const cat = new Cat("Fluffy")
+// cat.makeSound()
+//
+//
+// window.makeSoundInGlobalScope = cat.makeSound
+// window.makeSoundInGlobalScope() // undefined because of global scope
+//
+// const arrowCat = new ArrowCat("Fluf")
+// arrowCat.makeSound()
+//
+// window.arrowMakeSoundInGlobalScope = arrowCat.makeSound
+// window.arrowMakeSoundInGlobalScope()
+//
+//
+// // FUNKCJE STRZAŁKOWE NIE MOGĄ BYĆ KONSTRUKTORAMI !!!
+//
+// // ARROW FUNCTION CAN't BE CONSTRUCTOR FUNCTION
